@@ -3,11 +3,11 @@
 ###############
 
 # Znap(https://github.com/marlonrichert/zsh-autocomplete) がダウンロードされていない場合はダウンロードする
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+[[ -f ~/znap/zsh-snap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+        https://github.com/marlonrichert/zsh-snap.git ~/znap/zsh-snap
 
-source ~/Git/zsh-snap/znap.zsh
+source ~/znap/zsh-snap/znap.zsh
 
 # プロンプトに pure(https://github.com/sindresorhus/pure) を利用する
 znap prompt sindresorhus/pure
