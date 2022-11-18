@@ -1,43 +1,30 @@
-# branch の名前と状態を表示させる
-function branch-status {
-  local branch_name st branch_status
+###############
+# シェル設定
+###############
 
-  if [ ! -e  ".git" ]; then
-    # gitで管理されていないディレクトリは何も返さない
-    return
-  fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全てコミットされてクリーンな状態
-    branch_status=""
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # gitに管理されていないファイルがある状態
-    branch_status=" !"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git addされていないファイルがある状態
-    branch_status=" *"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commitされていないファイルがある状態
-    branch_status=" +"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-    echo "%F{red} !!"
-    return
-  else
-    # 上記以外の状態の場合は青色で表示させる
-    branch_status=""
-  fi
-  # ブランチ名を色付きで表示する
-  echo "($branch_name${branch_status})"
-}
+# Znap(https://github.com/marlonrichert/zsh-autocomplete) がダウンロードされていない場合はダウンロードする
+[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
 
-# プロンプトが表示されるたび、毎回プロンプトの文字列を評価し、置換する
-setopt prompt_subst
+source ~/Git/zsh-snap/znap.zsh
 
-# プロンプトの表示設定
-PROMPT='%F{cyan}[%n@%m]%F{white}: %B%~%b `branch-status`
-$ '
+# プロンプトに pure(https://github.com/sindresorhus/pure) を利用する
+znap prompt sindresorhus/pure
+
+# `znap source` で利用したいプラグインを自動的にダウンロードする
+znap source marlonrichert/zsh-autocomplete # https://github.com/marlonrichert/zsh-autocomplete
+
+# よく分からんけどいい感じにキャッシュしてくれるらしい
+znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+
+# よく分からんけどいい感じに非同期実行っぽいことをしてれくれるらしい
+znap function _pyenv pyenv 'eval "$( pyenv init - --no-rehash )"'
+compctl -K    _pyenv pyenv
+
+###############
+# ソース管理
+###############
 
 # '^' + ']' キーで ghq で管理しているリポジトリ一覧をリストアップする
 function peco-src () {
