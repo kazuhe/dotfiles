@@ -14,6 +14,7 @@ znap prompt sindresorhus/pure
 
 # `znap source` で利用したいプラグインを自動的にダウンロードする
 znap source marlonrichert/zsh-autocomplete # https://github.com/marlonrichert/zsh-autocomplete
+znap source Arc0re/Iceberg-iTerm2 # https://github.com/Arc0re/Iceberg-iTerm2
 
 # よく分からんけどいい感じにキャッシュしてくれるらしい
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
