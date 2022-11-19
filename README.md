@@ -26,14 +26,15 @@ git config --global ghq.root '~/src'
 ghq get https://github.com/kazuhe/dotfiles
 ```
 
-ディレクトリを移動してイントーラーを実行する。
+ディレクトリを移動してインストーラーを実行する。
 
 ```sh
 ./bin/install_dots.sh
 ```
 
-`Brewfile` ファイルを元にライブラリをインストールする。
+`.zshrc` の再読み込をして `Brewfile` ファイルを元にライブラリをインストールする。
 
 ```sh
+source ~/.zshrc
 brew bundle
 ```
