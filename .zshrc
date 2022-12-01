@@ -15,9 +15,6 @@ znap prompt sindresorhus/pure
 # `znap source` で利用したいプラグインを自動的にダウンロードする
 znap source marlonrichert/zsh-autocomplete # https://github.com/marlonrichert/zsh-autocomplete
 
-# よく分からんけどいい感じにキャッシュしてくれるらしい
-znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
-
 # よく分からんけどいい感じに非同期実行っぽいことをしてれくれるらしい
 znap function _pyenv pyenv 'eval "$( pyenv init - --no-rehash )"'
 compctl -K _pyenv pyenv
