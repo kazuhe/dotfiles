@@ -1,4 +1,5 @@
 brew "git"
+brew "curl"
 brew "peco"
 brew "ghq"
 brew "nodenv"
