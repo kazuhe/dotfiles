@@ -26,7 +26,7 @@ git config --global ghq.root '~/src'
 ghq get https://github.com/kazuhe/dotfiles
 ```
 
-環境固有のスプリプトがあれば、`.zsh/.env.zsh` を作成し記述する。
+環境固有のスプリプトがあれば、`.zsh/env.zsh` を作成し記述する。
 
 その後インストーラーを実行する。
 
