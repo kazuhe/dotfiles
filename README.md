@@ -26,7 +26,9 @@ git config --global ghq.root '~/src'
 ghq get https://github.com/kazuhe/dotfiles
 ```
 
-ディレクトリを移動してインストーラーを実行する。
+環境固有のスプリプトがあれば、`.zsh/.env.zsh` を作成し記述する。
+
+その後インストーラーを実行する。
 
 ```sh
 ./bin/install_dots.sh
