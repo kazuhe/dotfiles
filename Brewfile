@@ -2,7 +2,7 @@ brew "git"
 brew "curl"
 brew "peco"
 brew "ghq"
-brew "nodenv"
+brew "fnm"
 brew "tree"
 brew "jq"
 
